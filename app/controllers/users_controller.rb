@@ -17,6 +17,21 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  
+  def edit
+    logged_in_user
+    @user = current_user
+  end
+  
+  def update
+    logged_in_user
+    @user = current_user
+    if @user.update(params.require(:user).permit(:name, :email))
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
 
   private
 
