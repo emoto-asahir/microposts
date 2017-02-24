@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :follower_relationships, class_name:  "Relationship",
                                     foreign_key: "followed_id",
                                     dependent:   :destroy
-  has_many :follower_users, through: :follower_relationships, source: :follower_users
+  has_many :follower_users, through: :follower_relationships, source: :follower
   
   before_save {self.email = self.email.downcase}
   validates :name, presence: true, length:{maximum: 50}
