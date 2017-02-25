@@ -1,0 +1,16 @@
+
+<h3>Followings (<%= @users.count %>)</h3>
+<hr>
+<% @users.each_slice(3) do |user_l, user_c, user_r|%>
+  <div class="row">
+    <div class="col-md-4">
+      <%= render 'user_follow', user: user_l %>
+    </div>
+    <div class="col-md-4">
+      <%= render 'user_follow', user: user_c  if user_c%>
+    </div>
+    <div class="col-md-4">
+      <%= render 'user_follow', user: user_r if user_r%>
+    </div>
+  </div>
+<% end %>

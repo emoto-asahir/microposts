@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   has_many :microposts
-  
+
   
   # 他のユーザーをフォローする
   def follow(other_user)
