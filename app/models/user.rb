@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                                     foreign_key: "followed_id",
                                     dependent:   :destroy
   has_many :follower_users, through: :follower_relationships, source: :follower
-  
+  validates :profile, presence: true, length:{maximum: 200}, allow_blank: true
   before_save {self.email = self.email.downcase}
   validates :name, presence: true, length:{maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
